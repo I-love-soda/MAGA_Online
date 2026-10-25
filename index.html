@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f55c">
+  <meta name="description" content="The internet's most unnecessary argument generator. All hot takes, zero qualifications.">
+  <title>WRONG OPINIONS ONLY — Rage Bait Central</title>
+  <style>
+    :root{--ink:#17171c;--paper:#fffdf4;--acid:#f8f55c;--pink:#ff61b1;--blue:#7ee3ff;--orange:#ff815a;--shadow:7px 7px 0 var(--ink)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+    button,input,textarea{font:inherit}
+    button{cursor:pointer}
+    button:focus-visible,input:focus-visible,textarea:focus-visible{outline:4px solid #3869ee;outline-offset:3px}
+    ::selection{background:var(--pink);color:var(--ink)}
+    .marquee{background:var(--ink);color:var(--acid);font-size:.84rem;font-weight:1000;letter-spacing:2px;padding:11px 0;white-space:nowrap;overflow:hidden}
+    .marquee span{display:inline-block;min-width:200%;animation:slide 21s linear infinite}
+    @keyframes slide{to{transform:translateX(-50%)}}
+    header{padding:19px max(5vw,18px);display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:4px solid var(--ink);background:var(--acid)}
+    .brand{font-weight:1000;letter-spacing:-1.5px;font-size:clamp(1.1rem,3vw,1.6rem);line-height:1}
+    .brand b{background:var(--ink);color:var(--paper);padding:3px 8px;margin-left:2px;display:inline-block;transform:rotate(-3deg)}
+    .online{font-size:.72rem;font-weight:1000;letter-spacing:1px;background:white;border:3px solid var(--ink);padding:8px 10px;box-shadow:3px 3px 0 var(--ink)}
+    .dot{display:inline-block;background:#00cf7c;width:9px;height:9px;border-radius:50%;margin-right:5px}
+    .hero{border-bottom:4px solid var(--ink);padding:clamp(40px,7vw,95px) max(5vw,18px) 60px;background:radial-gradient(circle at 90% 35%,#ffb8d9 0 12%,transparent 12.1%),radial-gradient(circle at 80% 20%,#fff 0 4%,transparent 4.1%),var(--acid);position:relative}
+    .hero-inner{max-width:1300px;margin:auto}
+    .eyebrow{display:inline-block;background:var(--ink);color:white;font-weight:900;letter-spacing:2px;font-size:.83rem;padding:11px 15px;transform:rotate(-2deg);margin-bottom:24px}
+    h1{font-size:clamp(4.2rem,11.2vw,11rem);line-height:.82;letter-spacing:-.095em;margin:0;max-width:1120px;font-weight:1000;overflow-wrap:normal}
+    h1 em{font-style:normal;color:var(--pink);-webkit-text-stroke:3px var(--ink);text-shadow:5px 6px 0 var(--ink)}
+    .sub{font-size:clamp(1rem,2vw,1.42rem);line-height:1.35;font-weight:800;max-width:650px;margin:36px 0 30px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:13px}
+    .btn{border:4px solid var(--ink);border-radius:0;padding:15px 22px;background:var(--pink);color:var(--ink);font-size:clamp(.9rem,1.5vw,1.1rem);font-weight:1000;text-transform:uppercase;box-shadow:5px 5px 0 var(--ink);transition:transform .13s,box-shadow .13s}
+    .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+    .btn:active{transform:translate(5px,5px);box-shadow:none}
+    .btn.secondary{background:white}
+    .btn.blue{background:var(--blue)}
+    .sticker{position:absolute;right:8%;top:8%;width:130px;height:130px;border-radius:50%;background:var(--pink);border:4px solid var(--ink);display:grid;place-items:center;text-align:center;transform:rotate(20deg);font-weight:1000;line-height:1.05;box-shadow:5px 5px 0 var(--ink)}
+    main{max-width:1300px;padding:65px max(5vw,18px) 100px;margin:auto}
+    .section-label{font-size:.78rem;font-weight:1000;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:17px}
+    .section-label:after{content:"";height:3px;background:var(--ink);flex:1}
+    .section-title{font-size:clamp(2.5rem,6vw,5.7rem);line-height:.93;letter-spacing:-.075em;font-weight:1000;margin:0 0 28px}
+    .take-board{border:5px solid var(--ink);background:#fff;box-shadow:var(--shadow);overflow:hidden}
+    .take-head{padding:14px 20px;background:var(--pink);border-bottom:4px solid var(--ink);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:1000;font-size:.78rem;letter-spacing:1px}
+    .take-content{padding:clamp(25px,6vw,65px)}
+    .topic{font-size:.78rem;font-weight:1000;display:inline-block;border:3px solid var(--ink);background:var(--blue);padding:7px 12px;transform:rotate(-2deg);margin-bottom:23px}
+    .take-quote{font-size:clamp(2.2rem,5.7vw,5.6rem);line-height:1.03;letter-spacing:-.065em;font-weight:1000;min-height:180px;margin:0 0 28px;max-width:1000px}
+    .take-meta{display:flex;gap:15px;align-items:center;flex-wrap:wrap;font-size:.82rem;font-weight:900;color:#4b4b4f}
+    .take-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px}
+    .meter-layout{margin-top:75px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+    .meter-wrap{padding:28px;background:var(--blue);border:4px solid var(--ink);box-shadow:var(--shadow)}
+    .meter-name{font-size:1.05rem;font-weight:1000;letter-spacing:1px}
+    .rage-number{font-size:clamp(5rem,12vw,9rem);font-weight:1000;letter-spacing:-.1em;line-height:1;margin:15px 0 7px}
+    .rage-number small{font-size:2.2rem;letter-spacing:0}
+    .track{height:28px;border:4px solid var(--ink);background:white;position:relative;overflow:hidden}
+    .fill{height:100%;width:42%;background:linear-gradient(90deg,#72e7a4,#ffd83e,#ff4e5b);transition:width .3s}
+    .meter-status{font-weight:900;margin:17px 0 0;min-height:1.5em}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:21px}
+    .pill{font-size:.78rem;font-weight:1000;border:2px solid var(--ink);padding:8px 12px;background:white}
+    .divider{height:5px;background:var(--ink);margin:83px 0 70px}
+    .feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .post{border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:23px;display:flex;flex-direction:column;min-height:320px;background:#fff}
+    .post:nth-child(2){background:#ffdbec}.post:nth-child(3){background:#e4f7ff}
+    .post-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.77rem;font-weight:1000}
+    .avatar{height:44px;width:44px;border:3px solid var(--ink);display:grid;place-items:center;border-radius:50%;font-size:1.4rem;background:var(--acid)}
+    .post p{font-size:clamp(1.3rem,2.1vw,1.85rem);font-weight:1000;line-height:1.13;letter-spacing:-.04em;flex:1;margin:24px 0}
+    .post-foot{border-top:3px solid var(--ink);padding-top:15px;display:flex;justify-content:space-between;align-items:center;font-weight:900;font-size:.8rem;gap:8px}
+    .mini-btn{border:2px solid var(--ink);font-weight:1000;background:var(--acid);padding:8px 11px;box-shadow:2px 2px 0 var(--ink)}
+    .mini-btn:active{transform:translate(2px,2px);box-shadow:none}
+    .comments{margin-top:73px;border:5px solid var(--ink);box-shadow:var(--shadow);background:white}
+    .comments-head{background:var(--orange);border-bottom:4px solid var(--ink);padding:19px 24px;font-size:1.32rem;font-weight:1000;letter-spacing:-.03em}
+    .comments-inner{padding:clamp(18px,4vw,35px)}
+    .comment{display:flex;gap:13px;padding:18px 0;border-bottom:2px dashed #b7b7b7}
+    .comment .avatar{flex-shrink:0;height:41px;width:41px;font-size:1.1rem}
+    .comment strong{display:block;font-size:.9rem}
+    .comment p{line-height:1.45;margin:6px 0 0}
+    .reply-line{color:#68686c;font-weight:800;font-size:.75rem;margin-top:6px}
+    .comment-form{margin-top:25px;display:flex;gap:10px;align-items:stretch}
+    .comment-form input{min-width:0;flex:1;border:3px solid var(--ink);background:#fffbed;padding:15px;font-size:1rem;font-weight:700}
+    .note{font-size:.8rem;font-weight:800;color:#666;margin:15px 0 0}
+    footer{background:var(--ink);color:white;padding:37px max(5vw,18px);text-align:center;font-weight:900}
+    footer span{color:var(--acid)}
+    .toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,160%);background:var(--ink);color:white;border:3px solid white;padding:14px 20px;font-weight:900;max-width:calc(100vw - 32px);box-shadow:5px 5px 0 var(--pink);z-index:10;transition:transform .25s;text-align:center}
+    .toast.visible{transform:translate(-50%,0)}
+    .jiggle{animation:jiggle .33s ease-in-out}
+    @keyframes jiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-1.4deg)}75%{transform:rotate(1.4deg)}}
+    @media(max-width:850px){.sticker{right:5%;top:30px;width:91px;height:91px;font-size:.75rem}.hero{padding-top:145px}.meter-layout{grid-template-columns:1fr;gap:24px}.feed{grid-template-columns:1fr}.post{min-height:215px}.take-quote{min-height:150px}}
+    @media(max-width:460px){.brand{font-size:1.02rem}.online{font-size:.57rem;padding:7px}.hero{padding-top:120px}h1{font-size:clamp(3.65rem,15vw,5.2rem)}h1 em{-webkit-text-stroke:2px var(--ink);text-shadow:3px 4px 0 var(--ink)}.sub{margin-top:28px}.btn{width:100%;text-align:center}.take-actions .btn{width:100%}.take-head{font-size:.68rem}.comment-form{flex-direction:column}.comment-form .btn{width:100%}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="marquee" aria-hidden="true"><span>⚠ BAD OPINIONS AHEAD &nbsp; ✦ &nbsp; PLEASE GET UNREASONABLY UPSET &nbsp; ✦ &nbsp; YOUR FAVORITE THING IS OVERRATED &nbsp; ✦ &nbsp; THE COMMENTS ARE A DISASTER &nbsp; ✦ &nbsp; ⚠ BAD OPINIONS AHEAD &nbsp; ✦ &nbsp; PLEASE GET UNREASONABLY UPSET &nbsp; ✦ &nbsp; YOUR FAVORITE THING IS OVERRATED &nbsp; ✦ &nbsp; THE COMMENTS ARE A DISASTER &nbsp; ✦ &nbsp; </span></div>
+  <header>
+    <div class="brand">WRONG<span style="color:#ff3299">.</span>OPINIONS <b>ONLY</b></div>
+    <div class="online"><i class="dot"></i> INTERNET IS ANGRY</div>
+  </header>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">#1 SOURCE OF ABSOLUTELY NOTHING</div>
+      <h1>YOU'RE<br><em>WRONG.</em></h1>
+      <p class="sub">The world's least qualified opinion factory. We post nonsense. You take it personally. Everybody loses.</p>
+      <div class="hero-actions">
+        <button class="btn" id="heroTrigger">MAKE ME ANGRY ↗</button>
+        <button class="btn secondary" id="heroScroll">READ THE BAD TAKES ↓</button>
+      </div>
+    </div>
+    <div class="sticker">100%<br>UNNECESSARY<br>DRAMA</div>
+  </section>
+  <main>
+    <section id="generator" aria-labelledby="generator-title">
+      <div class="section-label">01 / GUARANTEED TO BOTHER SOMEBODY</div>
+      <h2 class="section-title" id="generator-title">TODAY'S<br>WORST TAKE.</h2>
+      <div class="take-board" id="takeBoard">
+        <div class="take-head"><span>🔥 BREAKING: PERSON HAS OPINION</span><span id="takeNumber">POST #0001</span></div>
+        <div class="take-content">
+          <div class="topic" id="topic">FOOD CRIMES</div>
+          <p class="take-quote" id="take" aria-live="polite">Cold pizza is better than hot pizza. Reheating it is disrespectful.</p>
+          <div class="take-meta"><span>👁 <span id="views">42,891</span> FURIOUSLY VIEWING</span><span>✍️ @professional_instigator</span></div>
+          <div class="take-actions">
+            <button class="btn" id="newTake">GIVE ME A WORSE TAKE ↻</button>
+            <button class="btn secondary" id="disagree">I DISAGREE 😡</button>
+            <button class="btn blue" id="agree">I AGREE 😌</button>
+            <button class="btn secondary" id="share">COPY THIS TAKE ⧉</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="meter-layout" aria-labelledby="meter-title">
+      <div>
+        <div class="section-label">02 / EMOTIONAL DAMAGE REPORT</div>
+        <h2 class="section-title" id="meter-title">HOW MAD<br>ARE YOU?</h2>
+        <p style="font-size:1.2rem;font-weight:750;line-height:1.5;max-width:470px">Every time you hit “I disagree,” the completely unscientific rage meter goes up. Agreeing makes it even more confused.</p>
+        <div class="pills"><span class="pill">NO FACT CHECKING</span><span class="pill">VERY LOUD</span><span class="pill">ZERO STAKES</span></div>
+      </div>
+      <div class="meter-wrap">
+        <div class="meter-name">LIVE RAGE LEVEL™</div>
+        <div class="rage-number"><span id="rageValue">42</span><small>%</small></div>
+        <div class="track" role="progressbar" id="rageTrack" aria-label="Rage meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="42"><div class="fill" id="rageFill"></div></div>
+        <p class="meter-status" id="rageStatus">MILDLY OFFENDED. KEEP SCROLLING.</p>
+      </div>
+    </section>
+    <div class="divider"></div>
+    <section id="feed" aria-labelledby="feed-title">
+      <div class="section-label">03 / TAKES NOBODY ASKED FOR</div>
+      <h2 class="section-title" id="feed-title">THE ARGUMENT<br>FEED.</h2>
+      <div class="feed">
+        <article class="post"><div class="post-top"><div class="avatar">🧠</div><span>@bigbrain3000</span></div><p>People who say “let me cook” have never made a decent meal in their lives.</p><div class="post-foot"><span>♥ <span class="likes">13,402</span> fake likes</span><button class="mini-btn like">ARGUE ↗</button></div></article>
+        <article class="post"><div class="post-top"><div class="avatar">🍕</div><span>@uninvited_opinion</span></div><p>Pizza is just an open-faced sandwich with better marketing.</p><div class="post-foot"><span>♥ <span class="likes">8,092</span> fake likes</span><button class="mini-btn like">ARGUE ↗</button></div></article>
+        <article class="post"><div class="post-top"><div class="avatar">📱</div><span>@rage_department</span></div><p>Typing “lol” after something that wasn't funny should be illegal.</p><div class="post-foot"><span>♥ <span class="likes">22,371</span> fake likes</span><button class="mini-btn like">ARGUE ↗</button></div></article>
+      </div>
+    </section>
+    <section class="comments" id="comments" aria-labelledby="comments-title">
+      <div class="comments-head" id="comments-title">💬 THE COMMENT SECTION (UNFORTUNATELY)</div>
+      <div class="comments-inner">
+        <div id="commentList" aria-live="polite">
+          <div class="comment"><div class="avatar">😤</div><div><strong>@actually_you_are_wrong</strong><p>I've never seen somebody be this loud and this incorrect.</p><div class="reply-line">♡ 6,931 fake likes · 2 min ago</div></div></div>
+          <div class="comment"><div class="avatar">🤡</div><div><strong>@source_trust_me</strong><p>I refuse to elaborate. I have already won this argument.</p><div class="reply-line">♡ 2,104 fake likes · 5 min ago</div></div></div>
+          <div class="comment"><div class="avatar">🍿</div><div><strong>@here_for_drama</strong><p>I don't even care about the topic. I'm just here to watch.</p><div class="reply-line">♡ 4,020 fake likes · 8 min ago</div></div></div>
+        </div>
+        <form class="comment-form" id="commentForm">
+          <input id="commentInput" maxlength="220" autocomplete="off" placeholder="Add a wildly unnecessary opinion..." aria-label="Write a comment" required>
+          <button class="btn" type="submit">POST IT ↗</button>
+        </form>
+        <p class="note">For entertainment only. These are jokes, not real news or real engagement numbers. Your comments stay in this browser.</p>
+      </div>
+    </section>
+  </main>
+  <footer>© 2026 WRONG OPINIONS ONLY · <span>MADE TO BE ANNOYING</span> · PLEASE LOG OFF SOMETIMES ✌</footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    (() => {
+      'use strict';
+      const takes = [
+        ['FOOD CRIMES','Cold pizza is better than hot pizza. Reheating it is disrespectful.'],
+        ['TECH DISASTERS','The best phone feature is the flashlight. Everything else is an unnecessary subscription.'],
+        ['FOOD CRIMES','Cereal is soup. You can argue with the dictionary, not me.'],
+        ['SOCIAL OFFENSES','If you say “we should hang out soon,” you should be legally required to pick a date.'],
+        ['GAMING WARS','The real final boss in every game is the settings menu.'],
+        ['FOOD CRIMES','The end piece of bread is the best piece. You all just lack courage.'],
+        ['TECH DISASTERS','A phone at 1% battery is just a phone with a sense of urgency.'],
+        ['UNPOPULAR OPINIONS','The middle seat on an airplane builds character.'],
+        ['FOOD CRIMES','Water tastes better at 3 A.M. than it does at any other time. Science is afraid to explain why.'],
+        ['SOCIAL OFFENSES','People who clap when a movie ends should have to give a speech afterward.'],
+        ['SCHOOL ARGUMENTS','Group projects are just multiplayer games where one person does the entire campaign.'],
+        ['UNPOPULAR OPINIONS','Every movie would improve if it had a 15-minute intermission for snacks.'],
+        ['TECH DISASTERS','Autocorrect has ruined more friendships than actual disagreements.'],
+        ['FOOD CRIMES','Putting ketchup on steak is less offensive than calling a hot dog a sandwich.'],
+        ['GAMING WARS','If you skip the tutorial and get confused, the game owes you an apology.'],
+        ['SOCIAL OFFENSES','Sending a voice note longer than two minutes is basically starting a podcast.'],
+        ['UNPOPULAR OPINIONS','The best part of a vacation is coming home and doing absolutely nothing.'],
+        ['FOOD CRIMES','A fork is just an overengineered spoon.'],
+        ['TECH DISASTERS','If you have 47 browser tabs open, that is a lifestyle choice, not multitasking.'],
+        ['SCHOOL ARGUMENTS','An 8 A.M. exam is not a test of knowledge. It is a test of personal betrayal.']
+      ];
+      const $ = id => document.getElementById(id);
+      let lastIndex = 0;
+      let post = 1;
+      let rage = 42;
+      let toastTimer;
+      const fmt = n => n.toLocaleString('en-US');
+      function notify(message){
+        const el=$('toast'); el.textContent=message; el.classList.add('visible');
+        clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove('visible'),2400);
+      }
+      function renderRage(){
+        rage=Math.max(0,Math.min(100,rage));
+        $('rageValue').textContent=rage; $('rageFill').style.width=rage+'%'; $('rageTrack').setAttribute('aria-valuenow',rage);
+        $('rageStatus').textContent = rage < 20 ? 'SUSPICIOUSLY CALM. ARE YOU EVEN ONLINE?' : rage < 45 ? 'MILDLY OFFENDED. KEEP SCROLLING.' : rage < 75 ? 'TYPING A PARAGRAPH AS WE SPEAK.' : rage < 100 ? 'ABOUT TO WRITE A 17-PART THREAD.' : 'MAXIMUM INTERNET. GO DRINK WATER.';
+      }
+      function newTake(){
+        let i; do { i=Math.floor(Math.random()*takes.length); } while(i===lastIndex && takes.length>1);
+        lastIndex=i; post++;
+        $('topic').textContent=takes[i][0]; $('take').textContent=takes[i][1];
+        $('takeNumber').textContent='POST #'+String(post).padStart(4,'0');
+        $('views').textContent=fmt(10000+Math.floor(Math.random()*89000));
+        const b=$('takeBoard'); b.classList.remove('jiggle'); void b.offsetWidth; b.classList.add('jiggle');
+      }
+      $('newTake').addEventListener('click',newTake);
+      $('heroTrigger').addEventListener('click',()=>{newTake();$('generator').scrollIntoView({behavior:'smooth'});});
+      $('heroScroll').addEventListener('click',()=>$('feed').scrollIntoView({behavior:'smooth'}));
+      $('disagree').addEventListener('click',()=>{rage+=12;renderRage();notify(['YOUR DISAGREEMENT HAS BEEN IGNORED.','WOW. ANOTHER OPINION.','THE INTERNET REMAINS UNCHANGED.','YOU ARE NOW IN A FAKE ARGUMENT.'][Math.floor(Math.random()*4)]);});
+      $('agree').addEventListener('click',()=>{rage-=9;renderRage();notify('SOMEHOW YOUR AGREEMENT IS ALSO CONTROVERSIAL.');});
+      $('share').addEventListener('click',async()=>{
+        const msg='“'+$('take').textContent+'” — WRONG OPINIONS ONLY';
+        try{
+          if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(msg);notify('COPIED. GO RUIN A GROUP CHAT.');}
+          else{const temp=document.createElement('textarea');temp.value=msg;temp.style.position='fixed';temp.style.left='-9999px';document.body.appendChild(temp);temp.select();const ok=document.execCommand('copy');temp.remove();notify(ok?'COPIED. GO RUIN A GROUP CHAT.':'COPY NOT AVAILABLE IN THIS BROWSER.');}
+        } catch {notify('COPY BLOCKED BY YOUR BROWSER.');}
+      });
+      document.querySelectorAll('.like').forEach(btn=>btn.addEventListener('click',()=>{
+        const span=btn.parentElement.querySelector('.likes');
+        span.textContent=fmt(Number(span.textContent.replaceAll(',',''))+1);
+        btn.textContent='YOU FELL FOR IT ✓'; btn.disabled=true;
+        rage+=4;renderRage();notify('YOU HAVE ENGAGED WITH THE BAIT.');
+      }));
+      const storageKey='wrong-opinions-comments-v1';
+      function appendComment(msg){
+        const row=document.createElement('div');row.className='comment';
+        const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent='🗣️';
+        const wrap=document.createElement('div');
+        const name=document.createElement('strong');name.textContent='@you_from_this_browser';
+        const body=document.createElement('p');body.textContent=msg;
+        const meta=document.createElement('div');meta.className='reply-line';meta.textContent='♡ 0 likes · just now';
+        wrap.append(name,body,meta);row.append(avatar,wrap);$('commentList').prepend(row);
+      }
+      let saved=[];
+      try{const raw=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(raw)){saved=raw.filter(x=>typeof x==='string').slice(-20);saved.forEach(appendComment);}}catch{}
+      $('commentForm').addEventListener('submit',e=>{
+        e.preventDefault(); const msg=$('commentInput').value.trim();if(!msg)return;
+        appendComment(msg);saved.push(msg);saved=saved.slice(-20);
+        try{localStorage.setItem(storageKey,JSON.stringify(saved));}catch{}
+        $('commentInput').value='';notify('COMMENT POSTED. THIS CHANGES NOTHING.');
+      });
+      renderRage();
+    })();
+  </script>
+</body>
+</html>
