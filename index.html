@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffed6b">
+  <title>Make The Comments Angry Again — Satire Generator</title>
+  <style>
+    :root { --ink:#171717; --paper:#fff8ec; --yellow:#ffea58; --orange:#ff6b2b; --red:#ed3535; --blue:#215bd6; --shadow:7px 7px 0 #171717; }
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);background-image:radial-gradient(#15151514 1px,transparent 1px);background-size:20px 20px}
+    button,textarea{font:inherit} button{cursor:pointer} button:focus-visible,textarea:focus-visible{outline:4px solid var(--blue);outline-offset:3px}
+    .wrap{max-width:1060px;margin:auto;padding:0 20px 50px}
+    .ribbon{background:var(--ink);color:white;text-align:center;padding:10px 16px;font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
+    header{padding:48px 0 26px;text-align:center;position:relative}
+    .eyebrow{display:inline-block;background:#fff;border:2px solid var(--ink);padding:7px 12px;font-size:12px;font-weight:1000;letter-spacing:.12em;transform:rotate(-2deg)}
+    h1{font-weight:1000;letter-spacing:-.075em;line-height:.93;font-size:clamp(58px,10vw,122px);margin:24px 0 22px;text-transform:uppercase}
+    h1 .orange{color:var(--orange);text-shadow:4px 4px 0 var(--ink)}
+    h1 .under{background:var(--yellow);padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+    .sub{font-size:clamp(15px,2.2vw,20px);max-width:680px;margin:0 auto 25px;line-height:1.45}
+    .pills{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}.pill{border:2px solid var(--ink);background:white;padding:8px 12px;border-radius:30px;font-size:11px;font-weight:900;letter-spacing:.06em}
+    .layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(230px,.9fr);gap:23px;margin-top:25px}
+    .card{border:3px solid var(--ink);background:white;box-shadow:var(--shadow);padding:25px}
+    .main-card{background:var(--yellow);display:flex;flex-direction:column;min-height:450px;position:relative;overflow:hidden}
+    .stamp{display:inline-flex;align-self:flex-start;background:var(--red);color:white;border:2px solid var(--ink);padding:8px 12px;font-weight:1000;transform:rotate(-3deg);font-size:12px;letter-spacing:.06em}
+    .take{font-size:clamp(29px,4vw,47px);letter-spacing:-.045em;line-height:1.09;font-weight:1000;margin:34px 0 26px;overflow-wrap:anywhere}
+    .label{font-size:11px;font-weight:1000;letter-spacing:.13em;text-transform:uppercase}
+    .meter{background:white;border:3px solid var(--ink);height:21px;margin:12px 0 8px;overflow:hidden}.meter-fill{height:100%;width:25%;background:linear-gradient(90deg,#ffad28,#f23b38);transition:width .35s ease}
+    .meter-meta{display:flex;justify-content:space-between;font-size:12px;font-weight:900;gap:10px}
+    .main-actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:25px}
+    .btn{border:3px solid var(--ink);padding:15px 12px;font-weight:1000;letter-spacing:.01em;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s;background:#fff;color:var(--ink)}
+    .btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+    .btn-primary{background:var(--ink);color:white;box-shadow:4px 4px 0 var(--orange)}
+    .side{display:flex;flex-direction:column;gap:23px}.side .card{padding:22px}
+    .section-title{font-size:23px;line-height:1.03;letter-spacing:-.04em;font-weight:1000;margin:0 0 14px;text-transform:uppercase}
+    .big-number{font-weight:1000;font-size:clamp(44px,6vw,62px);letter-spacing:-.08em;margin:4px 0;color:var(--blue)}
+    .side-note{font-size:13px;line-height:1.5;margin:8px 0 0;color:#444}
+    .fake-ticker{border:3px solid var(--ink);background:var(--orange);color:var(--ink);padding:14px;margin:28px 0;display:flex;gap:15px;align-items:center;overflow:hidden;font-weight:1000}
+    .fake-ticker strong{background:var(--ink);color:white;padding:5px 8px;font-size:11px;white-space:nowrap}.ticker-text{font-size:13px}
+    .comments{margin-top:23px}.comments h2{margin:0 0 14px;font-size:clamp(28px,4vw,40px);letter-spacing:-.055em;text-transform:uppercase}
+    .comment-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .thread{display:flex;flex-direction:column;gap:10px}
+    .bubble{padding:16px;border:2px solid var(--ink);background:white}.bubble:nth-child(2n){background:#dfeaff}
+    .who{font-weight:1000;font-size:13px;margin-bottom:8px}.bubble p{font-size:14px;margin:0;line-height:1.45;overflow-wrap:anywhere}
+    textarea{display:block;width:100%;min-height:110px;border:2px solid var(--ink);padding:13px;resize:vertical;margin:14px 0;background:white}
+    .comment-form{background:#ffe2d2}.small-print{font-size:12px;color:#444;line-height:1.55;margin:12px 0 0}
+    .foot{border-top:3px solid var(--ink);text-align:center;margin-top:44px;padding-top:22px;font-size:12px;font-weight:800;line-height:1.6}
+    .toast{position:fixed;right:18px;bottom:18px;max-width:min(360px,calc(100vw - 36px));background:var(--ink);color:white;border:2px solid white;box-shadow:4px 4px 0 var(--orange);padding:15px 18px;font-weight:800;z-index:10;opacity:0;transform:translateY(20px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}
+    @media(max-width:760px){.layout,.comment-grid{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:15px}.wrap{padding:0 15px 40px}.card{padding:20px}.main-card{min-height:430px}h1{font-size:clamp(52px,11vw,86px)}.side .card{padding:17px}}
+    @media(max-width:500px){.side{grid-template-columns:1fr}.main-actions{grid-template-columns:1fr}.take{font-size:clamp(29px,8vw,41px)}.main-card{min-height:auto}.big-number{font-size:52px}.fake-ticker{align-items:flex-start}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <div class="ribbon">🚨 PARODY WEBSITE · NOT NEWS · ALL REACTIONS SIMULATED 🚨</div>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">✦ THE INTERNET WAS A MISTAKE ✦</div>
+      <h1>MAKE THE<br><span class="orange">COMMENTS</span><br><span class="under">ANGRY AGAIN.</span></h1>
+      <p class="sub">An unnecessarily dramatic MAGA culture roast generator. Zero serious political analysis. One hundred percent imaginary internet chaos.</p>
+      <div class="pills"><span class="pill">🇺🇸 SATIRE ONLY</span><span class="pill">💬 FAKE COMMENT WARS</span><span class="pill">🌶️ PETTY OPINIONS</span><span class="pill">🧠 NO THINK PIECES</span></div>
+    </header>
+    <main>
+      <div class="layout">
+        <section class="card main-card" aria-label="Random satire hot take">
+          <span class="stamp">⚠️ TODAY'S COMPLETELY UNSOLICITED TAKE</span>
+          <p class="take" id="take" aria-live="polite">Buying a $40 political hat does not count as reading the Constitution.</p>
+          <div>
+            <div class="label">SIMULATED COMMENT SECTION TEMPERATURE</div>
+            <div class="meter" role="progressbar" aria-label="Fake rage level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35" id="rageBar"><div id="meterFill" class="meter-fill"></div></div>
+            <div class="meter-meta"><span id="rageText">MILDLY PRESSED</span><span id="rageValue">35% ENRAGED</span></div>
+          </div>
+          <div class="main-actions">
+            <button class="btn btn-primary" id="generateBtn" type="button">🎲 NEW TERRIBLE TAKE</button>
+            <button class="btn" id="rageBtn" type="button">😡 I'M OFFENDED (+10)</button>
+            <button class="btn" id="copyBtn" type="button">📋 COPY THE TAKE</button>
+            <button class="btn" id="replyBtn" type="button">💬 FAKE REPLY</button>
+          </div>
+        </section>
+        <aside class="side">
+          <section class="card" style="background:#dfeaff"><div class="label">YOUR ANGER CONTRIBUTION</div><div class="big-number" id="clickCount">0</div><p class="side-note">Number of times you've willingly pressed the offended button. This is between you and your browser.</p></section>
+          <section class="card" style="background:#fff"><h2 class="section-title">THE PATRIOTISM CHECKLIST™</h2><p class="side-note">☑ Has an uncle with very strong Facebook opinions</p><p class="side-note">☑ Thinks CAPS LOCK is a debate strategy</p><p class="side-note">☑ Owns at least one decorative eagle</p><p class="side-note">☐ Has read past the headline</p><button type="button" class="btn" id="checkBtn" style="width:100%;margin-top:15px;background:var(--yellow)">🏆 CHECK PATRIOT LEVEL</button></section>
+        </aside>
+      </div>
+      <div class="fake-ticker"><strong>BREAKING* </strong><span class="ticker-text" id="ticker">The bald eagle has requested a personal day from political merchandise. *Not an actual news report.</span></div>
+      <section class="comments" id="comments">
+        <h2>THE TOTALLY FAKE COMMENT SECTION <span aria-hidden="true">👇</span></h2>
+        <div class="comment-grid">
+          <div class="thread" id="thread" aria-live="polite">
+            <div class="bubble"><div class="who">🧢 PatriotEagle1776 <span style="font-weight:400;color:#666">· simulated</span></div><p>I will NOT be taking questions. I will be posting this to six group chats.</p></div>
+            <div class="bubble"><div class="who">🍿 JustHereForComments <span style="font-weight:400;color:#666">· simulated</span></div><p>The comment section is already writing a 14-paragraph response to a joke.</p></div>
+            <div class="bubble"><div class="who">🦅 FreedomFontSize72 <span style="font-weight:400;color:#666">· simulated</span></div><p>MY CAPS LOCK HAS MORE PATRIOTISM THAN YOUR WHOLE KEYBOARD.</p></div>
+          </div>
+          <form class="card comment-form" id="form">
+            <div class="label">ADD TO THE NONSENSE</div><h3 class="section-title" style="margin-top:10px">YOUR TURN, KEYBOARD WARRIOR</h3>
+            <label for="commentInput" style="font-weight:700;font-size:14px">Your comment</label>
+            <textarea id="commentInput" maxlength="240" placeholder="Type a ridiculously dramatic reaction…" required></textarea>
+            <button class="btn btn-primary" type="submit" style="width:100%">POST TO MY BROWSER ONLY</button>
+            <p class="small-print">Your comments stay in this browser on this device. No accounts, servers, or real comment feeds. If someone shares a screenshot, that is on them.</p>
+            <button class="btn" style="padding:8px 12px;font-size:12px;margin-top:13px" type="button" id="clearBtn">CLEAR MY COMMENTS</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="foot">THIS SITE IS A COMEDY PARODY OF ONLINE POLITICAL FAN CULTURE. IT IS NOT AFFILIATED WITH DONALD TRUMP, ANY CAMPAIGN, OR ANY POLITICAL ORGANIZATION.<br>NO REPORTING, POLLING, REAL USER COMMENTS, OR ACTUAL RAGE MEASUREMENTS OCCUR HERE. PLEASE ARGUE WITH YOUR TOASTER RESPONSIBLY.</footer>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script>
+  (()=>{
+    'use strict';
+    const takes = [
+      'Buying a $40 political hat does not count as reading the Constitution.',
+      'The bald eagle wants a restraining order against your bumper stickers.',
+      'Saying “DO YOUR RESEARCH” in all caps is not a research method.',
+      'Your uncle’s Facebook post has been nominated for a Pulitzer. By your uncle.',
+      'A lifted truck with seventeen flags has officially been assigned its own ZIP code.',
+      'Trump rally attendance is not a substitute for knowing what a bill does.',
+      'If your entire political opinion fits on a bumper sticker, maybe expand the font size of your thoughts.',
+      'The “LET’S GO BRANDON” sticker just submitted paperwork for retirement.',
+      'You can love America without turning your front lawn into a hat store.',
+      'BREAKING: Someone finally read the article before yelling “FAKE NEWS.” The internet is recovering.',
+      'If you call everything “woke,” the next challenge is defining it without using the word itself.',
+      'The red hat has been promoted to Secretary of Being Loud at Thanksgiving.',
+      'A debate is not automatically won because your comment has more exclamation marks.',
+      '“I saw it on Facebook” is not a citation format accepted by universities.',
+      'Your truck doesn’t get an extra vote for every flag attached to it.',
+      'The Make America Great Again hat now comes with a QR code linking to a dictionary.',
+      'A bald eagle is currently asking why it keeps being dragged into arguments about gas prices.',
+      'Buying a commemorative coin is not an economics degree.',
+      'The comment section has voted to make CAPS LOCK the 51st state.',
+      'Screaming “FREE SPEECH” is a dramatic way to begin a sentence about wanting someone else to be quiet.',
+      'The political merch industry would like to thank you for your independent thinking.',
+      'A “TRUST THE PLAN” bumper sticker has been waiting for an actual plan since last Tuesday.',
+      'The latest patriotic workout: 30 minutes of scrolling followed by 20 sets of angry typing.',
+      'An American flag isn’t an argument. It’s a flag. It is doing its best.',
+      'The founding fathers did not write the Constitution as a Facebook status update.'
+    ];
+    const fakeReplies = [
+      ['🧢 PatriotEagle1776','I am putting this on my fridge so I can stay mad tomorrow.'],
+      ['🦅 FreedomFontSize72','I HAVE READ THE FIRST FOUR WORDS AND ALREADY DISAGREE.'],
+      ['🍿 JustHereForComments','This is why I pay for internet. Incredible scenes.'],
+      ['🚘 BumperStickerProfessor','My vehicle disagrees with this statement on at least six separate windows.'],
+      ['🧠 CriticalThinkingOptional','Source: my cousin texted me from a fishing boat.'],
+      ['🇺🇸 UncleOfTheYear','I will be bringing this up at Thanksgiving, unprompted.'],
+      ['📱 ScrollWarrior9000','I made it halfway through the sentence. Good enough to have an opinion.']
+    ];
+    const $=id=>document.getElementById(id);
+    let last=-1, rage=35, clicks=0, comments=[];
+    try{clicks=Math.max(0,Math.floor(Number(localStorage.getItem('satireClicks')||0)))||0;
+        const saved=JSON.parse(localStorage.getItem('satireComments')||'[]');if(Array.isArray(saved))comments=saved.filter(x=>typeof x==='string').slice(-25).map(x=>x.slice(0,240));}catch(e){}
+    function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(toast.timeout);toast.timeout=setTimeout(()=>$('toast').classList.remove('show'),2700)}
+    function updateRage(){rage=Math.max(0,Math.min(100,rage));$('meterFill').style.width=rage+'%';$('rageValue').textContent=rage+'% ENRAGED';$('rageBar').setAttribute('aria-valuenow',rage);
+      $('rageText').textContent=rage>=90?'KEYBOARD IS ON FIRE':rage>=70?'FULL COMMENT MELTDOWN':rage>=45?'AGGRESSIVELY TYPING':'MILDLY PRESSED';}
+    function addBubble(name,message,simulated){const div=document.createElement('div');div.className='bubble';const who=document.createElement('div');who.className='who';who.textContent=name+(simulated?' · simulated':' · you, local only');const p=document.createElement('p');p.textContent=message;div.append(who,p);$('thread').prepend(div);while($('thread').children.length>35)$('thread').lastElementChild.remove()}
+    function setTake(){let idx;do{idx=Math.floor(Math.random()*takes.length)}while(idx===last&&takes.length>1);last=idx;$('take').textContent=takes[idx];rage=25+Math.floor(Math.random()*44);updateRage();const banners=['The bald eagle has requested a personal day from political merchandise.','Local keyboard reports being tired of CAPS LOCK.','Experts confirm that a bumper sticker is made of adhesive, not evidence.','A Thanksgiving group chat has declared a state of emergency.','Congress has not voted on your Facebook comments.'];$('ticker').textContent=banners[Math.floor(Math.random()*banners.length)]+' *This is a joke, not news.';}
+    function save(){try{localStorage.setItem('satireClicks',String(clicks));localStorage.setItem('satireComments',JSON.stringify(comments))}catch(e){}}
+    $('clickCount').textContent=clicks;
+    comments.forEach(c=>addBubble('✍️ You',c,false));
+    updateRage();
+    $('generateBtn').addEventListener('click',setTake);
+    $('rageBtn').addEventListener('click',()=>{rage+=10;clicks++;$('clickCount').textContent=clicks;updateRage();save();if(rage>=100)toast('🏆 Congratulations. You have successfully argued with a website.');else toast('Your imaginary outrage has been documented.');});
+    $('copyBtn').addEventListener('click',async()=>{const message=$('take').textContent+'\n\n— From a satire/parody website';try{await navigator.clipboard.writeText(message);toast('Copied. Please preserve the satire label.')}catch(e){const t=document.createElement('textarea');t.value=message;document.body.append(t);t.select();try{document.execCommand('copy');toast('Copied!')}catch(e){toast('Copy was blocked by your browser.')}t.remove();}});
+    $('replyBtn').addEventListener('click',()=>{const [name,msg]=fakeReplies[Math.floor(Math.random()*fakeReplies.length)];addBubble(name,msg,true);toast('One completely fake reply added.');});
+    $('checkBtn').addEventListener('click',()=>toast('🇺🇸 Certified 87% Patriotic, 13% Comment Section. (Absolutely made up.)'));
+    $('form').addEventListener('submit',e=>{e.preventDefault();const v=$('commentInput').value.trim().slice(0,240);if(!v)return;comments.push(v);comments=comments.slice(-25);save();addBubble('✍️ You',v,false);$('commentInput').value='';toast('Posted locally. No one on the internet can see this.');});
+    $('clearBtn').addEventListener('click',()=>{comments=[];save();$('thread').querySelectorAll('.bubble').forEach(el=>{if(el.querySelector('.who')?.textContent.includes('local only'))el.remove()});toast('Your locally saved comments were cleared.');});
+  })();
+  </script>
+</body>
+</html>
